@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/text_color_white">
+    <WebView
+        android:id="@+id/webView"
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <RelativeLayout
+        android:id="@+id/rlNoInternetAvailable"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivNoInternet"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="@dimen/activity_margin"
+            android:src="@drawable/ic_no_internet"/>
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivNoInternet"
+            android:layout_margin="@dimen/activity_margin"
+            android:gravity="center"
+            android:text="Oops! No Internet Available"
+            android:textSize="@dimen/text_size_large"/>
+
+        <TextView
+            android:id="@+id/tvRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv2"
+            android:layout_margin="@dimen/activity_margin"
+            android:gravity="center"
+            android:text="Refresh"
+            android:textSize="@dimen/text_size_large"/>
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

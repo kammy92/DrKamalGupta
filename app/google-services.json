@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "258774580492",
+    "firebase_url": "https://overstock-6b893.firebaseio.com",
+    "project_id": "overstock-6b893",
+    "storage_bucket": "overstock-6b893.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:258774580492:android:ed80fc43f27599ee",
+        "android_client_info": {
+          "package_name": "com.overstockart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "258774580492-rfair2ee3v2532hp5l7s6scrvfqme71p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMZIb4Lfv8D0paNrq4kQfQFktFZhYXvHc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
