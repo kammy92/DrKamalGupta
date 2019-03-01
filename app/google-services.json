@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "258774580492",
-    "firebase_url": "https://overstock-6b893.firebaseio.com",
-    "project_id": "overstock-6b893",
-    "storage_bucket": "overstock-6b893.appspot.com"
+    "project_number": "348405503901",
+    "firebase_url": "https://dr-kamal-gupta.firebaseio.com",
+    "project_id": "dr-kamal-gupta",
+    "storage_bucket": "dr-kamal-gupta.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:258774580492:android:ed80fc43f27599ee",
+        "mobilesdk_app_id": "1:348405503901:android:1ee99f48fda6e15f",
         "android_client_info": {
-          "package_name": "com.overstockart"
+          "package_name": "com.bjp.drkamalgupta"
         }
       },
       "oauth_client": [
         {
-          "client_id": "258774580492-rfair2ee3v2532hp5l7s6scrvfqme71p.apps.googleusercontent.com",
+          "client_id": "348405503901-h8f3f8j8pli0qrp011lipmbil73fp257.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCMZIb4Lfv8D0paNrq4kQfQFktFZhYXvHc"
+          "current_key": "AIzaSyBv9ZodVPfQ8_rqGyp_LlwWAsmAZJoHjuc"
         }
       ],
       "services": {

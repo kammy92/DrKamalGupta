@@ -13,7 +13,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.toolbox.StringRequest;
 import com.bjp.drkamalgupta.R;
+import com.bjp.drkamalgupta.app.AppController;
 
 import java.util.List;
 
@@ -108,5 +111,15 @@ public class Utils {
             e.printStackTrace ();
         }
         return isInBackground;
+    }
+    
+    public static void sendRequest (StringRequest strRequest, int timeout_seconds) {
+        strRequest.setShouldCache (false);
+        AppController.getInstance ().getRequestQueue ().getCache ().clear ();
+        int timeout = timeout_seconds * 1000;
+        AppController.getInstance ().addToRequestQueue (strRequest);
+        strRequest.setRetryPolicy (new DefaultRetryPolicy (timeout,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 }

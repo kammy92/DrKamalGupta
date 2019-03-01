@@ -86,7 +86,7 @@ public class NotificationUtils {
         if (TextUtils.isEmpty (notification.getMessage ()))
             return;
         mBuilder
-                .setSmallIcon (R.drawable.ic_notification_small)
+                .setSmallIcon (R.drawable.ic_notification_bjp)
                 .setSound (Settings.System.DEFAULT_NOTIFICATION_URI)
                 .setDefaults (Notification.DEFAULT_ALL)
                 .setStyle (new NotificationCompat.BigTextStyle().bigText (notification.getMessage ()))
