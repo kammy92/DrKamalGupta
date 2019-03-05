@@ -2,8 +2,6 @@ package com.bjp.drkamalgupta.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -27,20 +25,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bjp.drkamalgupta.R;
-import com.bjp.drkamalgupta.model.Notification;
 import com.bjp.drkamalgupta.utils.AppConfigTags;
 import com.bjp.drkamalgupta.utils.AppConfigURL;
 import com.bjp.drkamalgupta.utils.Constants;
 import com.bjp.drkamalgupta.utils.NetworkConnection;
-import com.bjp.drkamalgupta.utils.NotificationUtils;
 import com.bjp.drkamalgupta.utils.SetTypeFace;
 import com.bjp.drkamalgupta.utils.UserDetailsPref;
 import com.bjp.drkamalgupta.utils.Utils;
 
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
@@ -60,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         initView ();
         initData ();
         initListener ();
+        initApplication ();
     }
     
     private void initView () {
@@ -106,14 +101,6 @@ public class MainActivity extends AppCompatActivity {
         
         Utils.showProgressDialog (this, progressDialog, getResources ().getString (R.string.progress_dialog_text_loading), true);
         webView.loadUrl (Constants.app_url);
-    }
-    
-    private void showNotification () {
-        NotificationUtils notificationUtils = new NotificationUtils (getApplicationContext ());
-        Notification notification = new Notification ();
-//        notification.setMessage ("Main Kamal Gupta app sab se anurodh karta hun ki aane wale election main kamal ka button dabaye aur desh ko aage badaye");
-//        notification.setTitle ("Vote for BJP");
-        notificationUtils.showNotificationMessage (notification);
     }
     
     @Override
@@ -173,7 +160,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     
-    
     private void initApplication () {
         final String android_id = Settings.Secure.getString (getContentResolver (), Settings.Secure.ANDROID_ID);
         if (NetworkConnection.isNetworkAvailable (this)) {
@@ -229,5 +215,4 @@ public class MainActivity extends AppCompatActivity {
             Utils.sendRequest (strRequest, 30);
         }
     }
-    
 }
