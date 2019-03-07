@@ -22,13 +22,11 @@ public class AppConfigTags {
     public static final String MESSAGE_TEXT = "Message Text";
     
     
-    public static final String OTP = "otp";
-    public static final String MATCH = "match";
-    public static final String USER_EXIST = "user_exist";
-    public static final String STATUS = "status";
-
-
-
+    public static final String VERSION_UPDATE = "version_update";
+    public static final String UPDATE_MESSAGE = "update_message";
+    public static final String VERSION_CRITICAL = "version_critical";
+    
+    
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
     public static final String EMPLOYEE_NAME = "employee_name";
@@ -84,13 +82,11 @@ public class AppConfigTags {
     public static final String TOTAL = "total";
     
     
-    
-
-    public static final String DEVICE_TYPE = "device_type";
+    public static final String APP_VERSION = "app_version";
     public static final String DEVICE_ID = "device_id";
+    public static final String DEVICE_TYPE = "device_type";
     public static final String FIREBASE_ID = "firebase_id";
     
-
     
     public static final String TYPES = "types";
     public static final String TYPE_ID = "type_id";
