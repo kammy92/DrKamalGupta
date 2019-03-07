@@ -38,6 +38,7 @@ import com.bjp.drkamalgupta.utils.Utils;
 
 import org.json.JSONObject;
 
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
@@ -136,33 +137,6 @@ public class MainActivity extends AppCompatActivity {
         dialog.show ();
     }
     
-    private class CustomWebViewClient extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading (WebView view, String url) {
-            if (url.startsWith ("mailto:")) {
-                startActivity (new Intent (Intent.ACTION_SENDTO, Uri.parse (url)));
-            } else if (url.startsWith ("tel:")) {
-                startActivity (new Intent (Intent.ACTION_DIAL, Uri.parse (url)));
-            } else {
-                Utils.showProgressDialog (MainActivity.this, progressDialog, getResources ().getString (R.string.progress_dialog_text_loading), true);
-                view.loadUrl (url);
-            }
-            return true;
-        }
-        
-        @Override
-        public void onReceivedError (WebView view, int errorCode, String description, String failingUrl) {
-            if (view.canGoBack ()) {
-                view.goBack ();
-            }
-//            Utils.showToast (MainActivity.this, description, false);
-        }
-        
-        public void onPageFinished (WebView view, String url) {
-            progressDialog.dismiss ();
-        }
-    }
-    
     private void initApplication () {
         PackageInfo pInfo = null;
         try {
@@ -217,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
                                                                 overridePendingTransition (R.anim.slide_in_left, R.anim.slide_out_right);
                                                             }
                                                         }).build ();
-            
+    
                                                 dialog.getActionButton (DialogAction.POSITIVE).setOnClickListener (new CustomListener (MainActivity.this, dialog, DialogAction.POSITIVE));
                                                 dialog.getActionButton (DialogAction.NEGATIVE).setOnClickListener (new CustomListener (MainActivity.this, dialog, DialogAction.NEGATIVE));
                                                 dialog.show ();
@@ -285,6 +259,43 @@ public class MainActivity extends AppCompatActivity {
             };
             strRequest.setRetryPolicy (new DefaultRetryPolicy (DefaultRetryPolicy.DEFAULT_TIMEOUT_MS * 2, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             Utils.sendRequest (strRequest, 30);
+        }
+    }
+    
+    private class CustomWebViewClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading (WebView view, String url) {
+            if (url.startsWith ("mailto:")) {
+                startActivity (new Intent (Intent.ACTION_SENDTO, Uri.parse (url)));
+            } else if (url.startsWith ("tel:")) {
+                startActivity (new Intent (Intent.ACTION_DIAL, Uri.parse (url)));
+            } else if (url.startsWith ("whatsapp:")) {
+                try {
+                    Intent intent = Intent.parseUri (url, Intent.URI_INTENT_SCHEME);
+                    if (intent.resolveActivity (getPackageManager ()) != null)
+                        startActivity (intent);
+                    return true;
+                } catch (URISyntaxException use) {
+                    Log.e ("karman", use.getMessage ());
+                }
+            } else {
+                Utils.showProgressDialog (MainActivity.this, progressDialog, getResources ().getString (R.string.progress_dialog_text_loading), true);
+                view.loadUrl (url);
+            }
+            
+            return true;
+        }
+        
+        @Override
+        public void onReceivedError (WebView view, int errorCode, String description, String failingUrl) {
+            if (view.canGoBack ()) {
+                view.goBack ();
+            }
+//            Utils.showToast (MainActivity.this, description, false);
+        }
+        
+        public void onPageFinished (WebView view, String url) {
+            progressDialog.dismiss ();
         }
     }
     
